@@ -2,6 +2,7 @@ package com.aybarsacar.dictionaryapplication.feature_dictionary.di
 
 import android.app.Application
 import androidx.room.Room
+import com.aybarsacar.dictionaryapplication.feature_dictionary.data.local.Converters
 import com.aybarsacar.dictionaryapplication.feature_dictionary.data.local.WordInfoDb
 import com.aybarsacar.dictionaryapplication.feature_dictionary.data.remote.DictionaryApi
 import com.aybarsacar.dictionaryapplication.feature_dictionary.data.repository.WordInfoRepositoryImpl
@@ -41,7 +42,7 @@ object WordInfoModule {
   fun provideWordInfoDb(app: Application): WordInfoDb {
     return Room
       .databaseBuilder(app, WordInfoDb::class.java, "word_db")
-      .addTypeConverter(GsonParser(Gson()))
+      .addTypeConverter(Converters(GsonParser(Gson())))
       .build()
   }
 
