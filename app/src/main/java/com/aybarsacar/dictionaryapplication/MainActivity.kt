@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -88,6 +89,10 @@ class MainActivity : ComponentActivity() {
                     }
                   }
                 }
+              }
+
+              if (state.isLoading) {
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
               }
             }
           }
